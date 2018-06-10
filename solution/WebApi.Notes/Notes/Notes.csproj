@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <Platforms>AnyCPU;x64</Platforms>
+    <RootNamespace>com.udragan.netCore.webApi.Notes</RootNamespace>
+    <AssemblyName>netCore.webApi.Notes</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
