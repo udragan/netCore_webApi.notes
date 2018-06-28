@@ -1,16 +1,36 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using com.udragan.netCore.webApi.Notes.DAL.Contexts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace com.udragan.netCore.webApi.Notes.Controllers
 {
 	[Route("api/[controller]")]
 	public class ValuesController : Controller
 	{
+		#region Members
+
+		private readonly NotesContext _context;
+
+		#endregion
+
+		#region Constructors
+
+		public ValuesController(NotesContext context)
+		{
+			_context = context;
+		}
+
+		#endregion
+
 		// GET api/values
 		[HttpGet]
-		public IEnumerable<string> Get()
+		public JsonResult Get()
 		{
-			return new string[] { "value1", "value2" };
+			var users = _context.Users.Include(x => x.Notes);
+			JsonResult result = new JsonResult(users.ToList());
+
+			return result;
 		}
 
 		// GET api/values/5
