@@ -9,23 +9,48 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace com.udragan.netCore.webApi.Notes
 {
+	/// <summary>
+	/// Web host startup.
+	/// </summary>
 	public class Startup
 	{
+		#region Members
+
+		public IConfiguration Configuration { get; }
+
+		#endregion
+
+		#region Constructors
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Startup"/> class.
+		/// </summary>
+		/// <param name="configuration">The configuration.</param>
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
 		}
 
-		public IConfiguration Configuration { get; }
+		#endregion
 
-		// This method gets called by the runtime. Use this method to add services to the container.
+		#region Public Methods
+
+		/// <summary>
+		/// Runtime called method for configuring/registering the services to the container.
+		/// </summary>
+		/// <param name="services">The services collection.</param>
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDbContext<NotesContext>(opt => opt.UseInMemoryDatabase(databaseName: "inMemoryDb"));
+
 			services.AddMvc();
 		}
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		/// <summary>
+		/// Runtime called method for configuring HTTP request pipeline and (optional) data seed.
+		/// </summary>
+		/// <param name="app">The application builder.</param>
+		/// <param name="env">The hosting environment.</param>
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
 			if (env.IsDevelopment())
@@ -42,6 +67,8 @@ namespace com.udragan.netCore.webApi.Notes
 
 			app.UseMvc();
 		}
+
+		#endregion
 
 		#region Private methods
 
