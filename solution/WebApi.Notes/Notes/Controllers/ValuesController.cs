@@ -1,5 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using com.udragan.netCore.webApi.Notes.DAL.Contexts;
+using com.udragan.netCore.webApi.Notes.Model.DbModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,10 +26,9 @@ namespace com.udragan.netCore.webApi.Notes.Controllers
 
 		// GET api/values
 		[HttpGet]
-		public JsonResult Get()
+		public IEnumerable<User> Get()
 		{
-			var users = _context.Users.Include(x => x.Notes);
-			JsonResult result = new JsonResult(users.ToList());
+			var result = _context.Users.Include(x => x.Notes);
 
 			return result;
 		}
