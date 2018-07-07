@@ -15,7 +15,6 @@ namespace com.udragan.netCore.webApi.Notes.Model.DbModels
 		/// <summary>
 		/// Gets or sets the user identifier.
 		/// </summary>
-		[JsonIgnore]
 		public long UserId { get; set; }
 
 		/// <summary>
