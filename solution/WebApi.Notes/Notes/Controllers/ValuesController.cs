@@ -42,8 +42,10 @@ namespace com.udragan.netCore.webApi.Notes.Controllers
 
 		// POST api/values
 		[HttpPost]
-		public void Post([FromBody]string value)
+		public void Post([FromBody]Note value)
 		{
+			_context.Notes.Add(value);
+			_context.SaveChanges();
 		}
 
 		// PUT api/values/5
