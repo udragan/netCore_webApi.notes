@@ -7,7 +7,7 @@ namespace com.udragan.netCore.webApi.Notes.DAL.UnitOfWork.Interfaces
 	/// Generic Unit Of Work interface.
 	/// </summary>
 	/// <seealso cref="System.IDisposable" />
-	interface IUnitOfWork : IDisposable
+	public interface IUnitOfWork : IDisposable
 	{
 		/// <summary>
 		/// Gets the context.

@@ -7,9 +7,9 @@ namespace com.udragan.netCore.webApi.Notes.DAL.UnitOfWork
 	/// UnitOfWork implementation.
 	/// </summary>
 	/// <seealso cref="com.udragan.netCore.webApi.Notes.DAL.UnitOfWork.Interfaces.IUnitOfWork" />
-	class UnitOfWork : IUnitOfWork
+	public class UnitOfWork : IUnitOfWork
 	{
-		#region Fields
+		#region Properties
 
 		/// <summary>
 		/// Gets the context.

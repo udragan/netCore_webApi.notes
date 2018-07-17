@@ -7,7 +7,8 @@ namespace com.udragan.netCore.webApi.Notes.DAL.Repositories.Interfaces
 	/// Generic repository interface.
 	/// </summary>
 	/// <typeparam name="TEntity">The type of the entity.</typeparam>
-	interface IRepository<TEntity> where TEntity : class
+	public interface IRepository<TEntity>
+		where TEntity : class
 	{
 		/// <summary>
 		/// Gets all entities.
