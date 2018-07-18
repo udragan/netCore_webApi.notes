@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using com.udragan.netCore.webApi.Notes.DAL.Repositories.Interfaces;
 using com.udragan.netCore.webApi.Notes.DAL.UnitOfWork.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace com.udragan.netCore.webApi.Notes.DAL.Repositories
 {
@@ -42,7 +43,7 @@ namespace com.udragan.netCore.webApi.Notes.DAL.Repositories
 		/// </returns>
 		public IQueryable<TEntity> GetAll()
 		{
-			return _unitOfWork.Context.Set<TEntity>().AsQueryable<TEntity>();
+			return _unitOfWork.Context.Set<TEntity>().AsNoTracking();
 		}
 
 		/// <summary>
