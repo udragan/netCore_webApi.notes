@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
 using com.udragan.netCore.webApi.Notes.DAL.Contexts;
+using com.udragan.netCore.webApi.Notes.DAL.Repositories;
+using com.udragan.netCore.webApi.Notes.DAL.Repositories.Interfaces;
+using com.udragan.netCore.webApi.Notes.DAL.UnitOfWork;
+using com.udragan.netCore.webApi.Notes.DAL.UnitOfWork.Interfaces;
 using com.udragan.netCore.webApi.Notes.Model.DbModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -42,7 +46,8 @@ namespace com.udragan.netCore.webApi.Notes
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDbContext<NotesContext>(opt => opt.UseInMemoryDatabase(databaseName: "inMemoryDb"));
-
+			services.AddTransient<INotesUnitOfWork, NotesUnitOfWork>();
+			services.AddTransient<INotesRepository, NotesRepository>();
 			services.AddMvc();
 		}
 

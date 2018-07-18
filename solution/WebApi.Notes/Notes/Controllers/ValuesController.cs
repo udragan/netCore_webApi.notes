@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using com.udragan.netCore.webApi.Notes.DAL.Contexts;
+using System.Threading.Tasks;
+using com.udragan.netCore.webApi.Notes.DAL.Repositories.Interfaces;
 using com.udragan.netCore.webApi.Notes.Model.DbModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,26 +12,26 @@ namespace com.udragan.netCore.webApi.Notes.Controllers
 	{
 		#region Members
 
-		private readonly NotesContext _context;
+		private readonly INotesRepository _notesRepository;
 
 		#endregion
 
 		#region Constructors
 
-		public ValuesController(NotesContext context)
+		public ValuesController(INotesRepository notesRepository)
 		{
-			_context = context;
+			_notesRepository = notesRepository;
 		}
 
 		#endregion
 
 		// GET api/values
 		[HttpGet]
-		public IEnumerable<User> Get()
+		public async Task<List<Note>> Get()
 		{
-			var result = _context.Users.Include(x => x.Notes);
+			var result = _notesRepository.GetAll();
 
-			return result;
+			return await result.ToListAsync();
 		}
 
 		// GET api/values/5
@@ -44,8 +45,8 @@ namespace com.udragan.netCore.webApi.Notes.Controllers
 		[HttpPost]
 		public void Post([FromBody]Note value)
 		{
-			_context.Notes.Add(value);
-			_context.SaveChanges();
+			//_context.Notes.Add(value);
+			//_context.SaveChanges();
 		}
 
 		// PUT api/values/5
