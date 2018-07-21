@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace com.udragan.netCore.webApi.Notes.Controllers
 {
 	[Route("api/[controller]")]
-	public class ValuesController : Controller
+	public class NotesController : Controller
 	{
 		#region Members
 
@@ -18,14 +18,14 @@ namespace com.udragan.netCore.webApi.Notes.Controllers
 
 		#region Constructors
 
-		public ValuesController(INotesRepository notesRepository)
+		public NotesController(INotesRepository notesRepository)
 		{
 			_notesRepository = notesRepository;
 		}
 
 		#endregion
 
-		// GET api/values
+		// GET api/notes
 		[HttpGet]
 		public async Task<List<Note>> Get()
 		{
