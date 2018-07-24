@@ -62,9 +62,10 @@ namespace com.udragan.netCore.webApi.Notes.DAL.Repositories
 		/// Creates the specified entity in the repository.
 		/// </summary>
 		/// <param name="entity">The entity to create.</param>
-		public Task Create(TEntity entity)
+		public async Task Create(TEntity entity)
 		{
-			throw new NotImplementedException();
+			await _unitOfWork.Context.Set<TEntity>().AddAsync(entity);
+			await _unitOfWork.Context.SaveChangesAsync();
 		}
 
 		/// <summary>

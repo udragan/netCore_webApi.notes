@@ -34,28 +34,27 @@ namespace com.udragan.netCore.webApi.Notes.Controllers
 			return await result.ToListAsync();
 		}
 
-		// GET api/values/5
+		// GET api/notes/5
 		[HttpGet("{id}")]
 		public string Get(int id)
 		{
 			return "value";
 		}
 
-		// POST api/values
+		// POST api/notes
 		[HttpPost]
 		public void Post([FromBody]Note value)
 		{
-			//_context.Notes.Add(value);
-			//_context.SaveChanges();
+			_notesRepository.Create(value);
 		}
 
-		// PUT api/values/5
+		// PUT api/notes/5
 		[HttpPut("{id}")]
 		public void Put(int id, [FromBody]string value)
 		{
 		}
 
-		// DELETE api/values/5
+		// DELETE api/notes/5
 		[HttpDelete("{id}")]
 		public void Delete(int id)
 		{
