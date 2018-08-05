@@ -36,9 +36,9 @@ namespace com.udragan.netCore.webApi.Notes.Controllers
 
 		// GET api/notes/5
 		[HttpGet("{id}")]
-		public string Get(int id)
+		public async Task<Note> Get(int id)
 		{
-			return "value";
+			return await _notesRepository.GetById(id);
 		}
 
 		// POST api/notes

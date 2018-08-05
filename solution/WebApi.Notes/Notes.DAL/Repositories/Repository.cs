@@ -51,11 +51,11 @@ namespace com.udragan.netCore.webApi.Notes.DAL.Repositories
 		/// </summary>
 		/// <param name="id">The identifier.</param>
 		/// <returns>
-		/// The entity with provided identifier.
+		/// The entity with provided identifier if exists, null otherwise.
 		/// </returns>
 		public Task<TEntity> GetById(long id)
 		{
-			throw new NotImplementedException();
+			return _unitOfWork.Context.Set<TEntity>().FindAsync(id);
 		}
 
 		/// <summary>
