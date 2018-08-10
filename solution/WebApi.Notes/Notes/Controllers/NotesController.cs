@@ -56,8 +56,16 @@ namespace com.udragan.netCore.webApi.Notes.Controllers
 
 		// DELETE api/notes/5
 		[HttpDelete("{id}")]
-		public void Delete(int id)
+		public async Task<IActionResult> Delete(int id)
 		{
+			int result = await _notesRepository.Remove(id);
+
+			if (result == 1)
+			{
+				return Ok();
+			}
+
+			return NoContent();
 		}
 	}
 }

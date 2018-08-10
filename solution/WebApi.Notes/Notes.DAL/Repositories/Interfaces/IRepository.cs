@@ -42,6 +42,7 @@ namespace com.udragan.netCore.webApi.Notes.DAL.Repositories.Interfaces
 		/// Removes the entity by specified id.
 		/// </summary>
 		/// <param name="id">The identifier.</param>
-		Task Remove(long id);
+		/// <returns>Greater than 0 if entity exists, 0 otherwise.</returns>
+		Task<int> Remove(long id);
 	}
 }

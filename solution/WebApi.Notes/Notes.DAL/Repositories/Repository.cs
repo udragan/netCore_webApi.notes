@@ -72,9 +72,17 @@ namespace com.udragan.netCore.webApi.Notes.DAL.Repositories
 		/// Removes the entity by specified id.
 		/// </summary>
 		/// <param name="id">The identifier.</param>
-		public Task Remove(long id)
+		/// <returns>Greater than 0 if entity exists, 0 otherwise.</returns>
+		public async Task<int> Remove(long id)
 		{
-			throw new NotImplementedException();
+			TEntity entity = await GetById(id);
+
+			if (entity != null)
+			{
+				_unitOfWork.Context.Set<TEntity>().Remove(entity);
+			}
+
+			return await _unitOfWork.Context.SaveChangesAsync();
 		}
 
 		/// <summary>
