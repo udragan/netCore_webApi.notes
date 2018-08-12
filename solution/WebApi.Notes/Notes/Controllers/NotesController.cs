@@ -50,8 +50,25 @@ namespace com.udragan.netCore.webApi.Notes.Controllers
 
 		// PUT api/notes/5
 		[HttpPut("{id}")]
-		public void Put(int id, [FromBody]string value)
+		public async Task<IActionResult> Put(int id, [FromBody]Note value)
 		{
+			Note entity = await Get(id);
+
+			if (entity == null)
+			{
+				return NotFound();
+			}
+
+			entity.Content = value.Content;
+
+			int result = await _notesRepository.Update(id, entity);
+
+			if (result == 0)
+			{
+				return NotFound();
+			}
+
+			return NoContent();
 		}
 
 		// DELETE api/notes/5
@@ -60,12 +77,12 @@ namespace com.udragan.netCore.webApi.Notes.Controllers
 		{
 			int result = await _notesRepository.Remove(id);
 
-			if (result == 1)
+			if (result == 0)
 			{
-				return Ok();
+				return NoContent();
 			}
 
-			return NoContent();
+			return Ok();
 		}
 	}
 }

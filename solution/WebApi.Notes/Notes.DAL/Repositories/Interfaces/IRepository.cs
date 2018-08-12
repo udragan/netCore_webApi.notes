@@ -36,7 +36,8 @@ namespace com.udragan.netCore.webApi.Notes.DAL.Repositories.Interfaces
 		/// </summary>
 		/// <param name="id">The identifier.</param>
 		/// <param name="entity">The entity to update.</param>
-		Task Update(long id, TEntity entity);
+		/// <returns>Greater than 0 if entity updated successfully, 0 otherwise.</returns>
+		Task<int> Update(long id, TEntity entity);
 
 		/// <summary>
 		/// Removes the entity by specified id.

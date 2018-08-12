@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using com.udragan.netCore.webApi.Notes.DAL.Repositories.Interfaces;
 using com.udragan.netCore.webApi.Notes.DAL.UnitOfWork.Interfaces;
@@ -90,9 +89,16 @@ namespace com.udragan.netCore.webApi.Notes.DAL.Repositories
 		/// </summary>
 		/// <param name="id">The identifier.</param>
 		/// <param name="entity">The entity to update.</param>
-		public Task Update(long id, TEntity entity)
+		public async Task<int> Update(long id, TEntity entity)
 		{
-			throw new NotImplementedException();
+			TEntity oldEntity = await GetById(id);
+
+			if (oldEntity != null)
+			{
+				_unitOfWork.Context.Set<TEntity>().Update(entity);
+			}
+
+			return await _unitOfWork.Context.SaveChangesAsync();
 		}
 
 		#endregion
