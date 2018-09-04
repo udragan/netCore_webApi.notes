@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notes.Model", "Notes.Model\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notes.DAL", "Notes.DAL\Notes.DAL.csproj", "{8637BA41-2974-46AF-A31B-C583A7887AC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.Common", "Notes.Common\Notes.Common.csproj", "{798C2833-E177-4375-946A-14F4F5F83330}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notes.Common", "Notes.Common\Notes.Common.csproj", "{798C2833-E177-4375-946A-14F4F5F83330}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.Domain", "Notes.Domain\Notes.Domain.csproj", "{F7E84C2D-1E2B-4C07-ADA1-C02FDCF3CAC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{798C2833-E177-4375-946A-14F4F5F83330}.Debug|x64.Build.0 = Debug|x64
 		{798C2833-E177-4375-946A-14F4F5F83330}.Release|x64.ActiveCfg = Release|x64
 		{798C2833-E177-4375-946A-14F4F5F83330}.Release|x64.Build.0 = Release|x64
+		{F7E84C2D-1E2B-4C07-ADA1-C02FDCF3CAC3}.Debug|x64.ActiveCfg = Debug|x64
+		{F7E84C2D-1E2B-4C07-ADA1-C02FDCF3CAC3}.Debug|x64.Build.0 = Debug|x64
+		{F7E84C2D-1E2B-4C07-ADA1-C02FDCF3CAC3}.Release|x64.ActiveCfg = Release|x64
+		{F7E84C2D-1E2B-4C07-ADA1-C02FDCF3CAC3}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
