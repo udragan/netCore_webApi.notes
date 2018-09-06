@@ -14,4 +14,8 @@
     <OutputPath>..\bin64\Release\</OutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Notes.Common\Notes.Common.csproj" />
+  </ItemGroup>
+
 </Project>
