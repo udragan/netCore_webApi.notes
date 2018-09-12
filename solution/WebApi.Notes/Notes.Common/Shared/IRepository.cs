@@ -12,6 +12,11 @@ namespace com.udragan.netCore.webApi.Notes.Common.Shared
 		where TEntity : Entity
 	{
 		/// <summary>
+		/// Gets the unit of work.
+		/// </summary>
+		IUnitOfWork UnitOfWork { get; }
+
+		/// <summary>
 		/// Gets all entities.
 		/// </summary>
 		/// <returns>

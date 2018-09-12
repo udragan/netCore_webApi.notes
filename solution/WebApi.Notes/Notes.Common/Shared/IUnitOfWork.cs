@@ -9,7 +9,7 @@ namespace com.udragan.netCore.webApi.Notes.Common.Shared
 	public interface IUnitOfWork : IDisposable
 	{
 		/// <summary>
-		/// Commits the changes to the context.
+		/// Commits all tracked changes to the context.
 		/// </summary>
 		void Commit();
 	}
