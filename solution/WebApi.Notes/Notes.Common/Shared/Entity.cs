@@ -32,7 +32,7 @@ namespace com.udragan.netCore.webApi.Notes.Common.Shared
 		/// </returns>
 		public bool IsTransient()
 		{
-			return Id == default(Int32);
+			return Id == default(long);
 		}
 
 		/// <summary>
