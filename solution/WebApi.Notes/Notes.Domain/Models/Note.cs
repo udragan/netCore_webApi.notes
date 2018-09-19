@@ -8,15 +8,6 @@ namespace com.udragan.netCore.webApi.Notes.Domain.Models
 	/// <seealso cref="com.udragan.netCore.webApi.Notes.Common.Shared.Entity" />
 	public class Note : Entity
 	{
-		#region Members
-
-		private long _userId;
-		private string _caption;
-		private string _text;
-		private bool _isChecked;
-
-		#endregion
-
 		#region Constructors
 
 		/// <summary>
@@ -32,10 +23,10 @@ namespace com.udragan.netCore.webApi.Notes.Domain.Models
 			string text,
 			bool isChecked)
 		{
-			_userId = userId;
-			_caption = caption;
-			_text = text;
-			_isChecked = isChecked;
+			UserId = userId;
+			Caption = caption;
+			Text = text;
+			IsChecked = isChecked;
 		}
 
 		#endregion
@@ -43,19 +34,24 @@ namespace com.udragan.netCore.webApi.Notes.Domain.Models
 		#region Properties
 
 		/// <summary>
+		/// Gets the user identifier.
+		/// </summary>
+		public long UserId { get; private set; }
+
+		/// <summary>
 		/// Gets the note caption.
 		/// </summary>
-		public string Caption => _caption;
+		public string Caption { get; private set; }
 
 		/// <summary>
 		/// Gets the note text.
 		/// </summary>
-		public string Text => _text;
+		public string Text { get; private set; }
 
 		/// <summary>
 		/// Gets a value indicating whether the note is checked.
 		/// </summary>
-		public bool IsChecked => _isChecked;
+		public bool IsChecked { get; private set; }
 
 		#endregion
 	}

@@ -11,7 +11,6 @@ namespace com.udragan.netCore.webApi.Notes.Domain.Models
 	{
 		#region Members
 
-		private string _name;
 		private List<Note> _notes;
 
 		#endregion
@@ -24,7 +23,7 @@ namespace com.udragan.netCore.webApi.Notes.Domain.Models
 		/// <param name="name">The name.</param>
 		public User(string name)
 		{
-			_name = name;
+			Name = name;
 			_notes = new List<Note>();
 		}
 
@@ -35,7 +34,7 @@ namespace com.udragan.netCore.webApi.Notes.Domain.Models
 		/// <summary>
 		/// Gets the user`s name.
 		/// </summary>
-		public string Name => _name;
+		public string Name { get; private set; }
 
 		/// <summary>
 		/// Gets the user`s notes.
