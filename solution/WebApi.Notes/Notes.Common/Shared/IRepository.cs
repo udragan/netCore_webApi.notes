@@ -12,11 +12,6 @@ namespace com.udragan.netCore.webApi.Notes.Common.Shared
 		where TEntity : Entity
 	{
 		/// <summary>
-		/// Gets the unit of work.
-		/// </summary>
-		IUnitOfWork UnitOfWork { get; }
-
-		/// <summary>
 		/// Gets all entities.
 		/// </summary>
 		/// <returns>
@@ -47,6 +42,7 @@ namespace com.udragan.netCore.webApi.Notes.Common.Shared
 		/// </summary>
 		/// <param name="entity">The entity to create.</param>
 		void Add(TEntity entity);
+		//TODO: should return TEntity instead of void!
 
 		/// <summary>
 		/// Removes the entity from reporitory.

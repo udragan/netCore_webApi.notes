@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using com.udragan.netCore.webApi.Notes.Common.Shared;
 using com.udragan.netCore.webApi.Notes.Domain.Interfaces;
 using com.udragan.netCore.webApi.Notes.Domain.Models;
 using com.udragan.netCore.webApi.Notes.Infrastructure.Contexts;
@@ -36,11 +35,6 @@ namespace com.udragan.netCore.webApi.Notes.Infrastructure.Repositories
 		#endregion
 
 		#region IRepository
-
-		/// <summary>
-		/// Gets the unit of work.
-		/// </summary>
-		public IUnitOfWork UnitOfWork => _context;
 
 		/// <summary>
 		/// Adds the specified Note entity.
