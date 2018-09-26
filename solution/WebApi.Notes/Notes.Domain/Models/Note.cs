@@ -54,5 +54,20 @@ namespace com.udragan.netCore.webApi.Notes.Domain.Models
 		public bool IsChecked { get; private set; }
 
 		#endregion
+
+		#region Public methods
+
+		/// <summary>
+		/// Updates this entity with specified other.
+		/// </summary>
+		/// <param name="other">The other note to update from.</param>
+		public void Update(Note other)
+		{
+			Caption = other.Caption ?? Caption;
+			Text = other.Text ?? Text;
+			IsChecked = other.IsChecked;
+		}
+
+		#endregion
 	}
 }
