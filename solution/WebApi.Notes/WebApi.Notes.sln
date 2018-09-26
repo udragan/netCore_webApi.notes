@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notes.Common", "Notes.Commo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notes.Domain", "Notes.Domain\Notes.Domain.csproj", "{F7E84C2D-1E2B-4C07-ADA1-C02FDCF3CAC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notes.Infrastructure", "Notes.Infrastructure\Notes.Infrastructure.csproj", "{10E5611C-B041-4C71-9734-0467AFC4CE4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Notes.Infrastructure", "Notes.Infrastructure\Notes.Infrastructure.csproj", "{10E5611C-B041-4C71-9734-0467AFC4CE4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,13 +26,9 @@ Global
 		{5A7EE0CC-5F66-4BE1-9327-446A026574FE}.Release|x64.ActiveCfg = Release|x64
 		{5A7EE0CC-5F66-4BE1-9327-446A026574FE}.Release|x64.Build.0 = Release|x64
 		{98763087-692B-42E5-BB83-A54C78A23F4B}.Debug|x64.ActiveCfg = Debug|x64
-		{98763087-692B-42E5-BB83-A54C78A23F4B}.Debug|x64.Build.0 = Debug|x64
 		{98763087-692B-42E5-BB83-A54C78A23F4B}.Release|x64.ActiveCfg = Release|x64
-		{98763087-692B-42E5-BB83-A54C78A23F4B}.Release|x64.Build.0 = Release|x64
 		{8637BA41-2974-46AF-A31B-C583A7887AC9}.Debug|x64.ActiveCfg = Debug|x64
-		{8637BA41-2974-46AF-A31B-C583A7887AC9}.Debug|x64.Build.0 = Debug|x64
 		{8637BA41-2974-46AF-A31B-C583A7887AC9}.Release|x64.ActiveCfg = Release|x64
-		{8637BA41-2974-46AF-A31B-C583A7887AC9}.Release|x64.Build.0 = Release|x64
 		{798C2833-E177-4375-946A-14F4F5F83330}.Debug|x64.ActiveCfg = Debug|x64
 		{798C2833-E177-4375-946A-14F4F5F83330}.Debug|x64.Build.0 = Debug|x64
 		{798C2833-E177-4375-946A-14F4F5F83330}.Release|x64.ActiveCfg = Release|x64
