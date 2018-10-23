@@ -26,7 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Notes.DAL\Notes.DAL.csproj" />
+    <ProjectReference Include="..\Notes.Domain\Notes.Domain.csproj" />
+    <ProjectReference Include="..\Notes.Infrastructure\Notes.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

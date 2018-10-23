@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using com.udragan.netCore.webApi.Notes.DAL.Contexts;
-using com.udragan.netCore.webApi.Notes.DAL.Repositories;
-using com.udragan.netCore.webApi.Notes.DAL.Repositories.Interfaces;
-using com.udragan.netCore.webApi.Notes.DAL.UnitOfWork;
-using com.udragan.netCore.webApi.Notes.DAL.UnitOfWork.Interfaces;
-using com.udragan.netCore.webApi.Notes.Model.DbModels;
+﻿using com.udragan.netCore.webApi.Notes.Domain.Interfaces;
+using com.udragan.netCore.webApi.Notes.Domain.Models;
+using com.udragan.netCore.webApi.Notes.Infrastructure.Contexts;
+using com.udragan.netCore.webApi.Notes.Infrastructure.Repositories;
+using com.udragan.netCore.webApi.Notes.Infrastructure.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +18,7 @@ namespace com.udragan.netCore.webApi.Notes
 	{
 		#region Members
 
-		public IConfiguration Configuration { get; }
+		private IConfiguration _configuration;
 
 		#endregion
 
@@ -32,7 +30,7 @@ namespace com.udragan.netCore.webApi.Notes
 		/// <param name="configuration">The configuration.</param>
 		public Startup(IConfiguration configuration)
 		{
-			Configuration = configuration;
+			_configuration = configuration;
 		}
 
 		#endregion
@@ -46,8 +44,10 @@ namespace com.udragan.netCore.webApi.Notes
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDbContext<NotesContext>(opt => opt.UseInMemoryDatabase(databaseName: "inMemoryDb"));
-			services.AddTransient<INotesUnitOfWork, NotesUnitOfWork>();
-			services.AddTransient<INotesRepository, NotesRepository>();
+			services.AddScoped<INoteRepository, NoteRepository>();
+			services.AddScoped<IUserRepository, UserRepository>();
+			services.AddScoped<INotesAppUnitOfWork, NotesAppUnitOfWork>();
+
 			services.AddMvc();
 		}
 
@@ -79,29 +79,15 @@ namespace com.udragan.netCore.webApi.Notes
 
 		private static void SeedTestData(NotesContext context)
 		{
-			context.AddRange(new User
-			{
-				Name = "TestUser1",
-				Notes = new List<Note>
-				{
-					new Note
-					{
-						Content = "First content.",
-					},
-					new Note
-					{
-						Content = "Second note content of TestUser1.",
-					},
-				},
-			},
-			new User
-			{
-				Name = "TestUser2",
-			},
-			new User
-			{
-				Name = "TestUser3",
-			});
+			User user1 = new User("TestUser1");
+			user1.AddNote("First Note", "This is the first note.", false);
+
+			User user2 = new User("TestUser2");
+			user2.AddNote("Note Two", "This is second users first note", false);
+			user2.AddNote("Note Two two", "This is the second note of the second user.", false);
+
+			context.Users.Add(user1);
+			context.Users.Add(user2);
 
 			context.SaveChanges();
 		}

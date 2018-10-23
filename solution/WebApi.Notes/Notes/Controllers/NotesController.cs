@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using com.udragan.netCore.webApi.Notes.DAL.Repositories.Interfaces;
-using com.udragan.netCore.webApi.Notes.Model.DbModels;
+using System.Linq;
+using com.udragan.netCore.webApi.Notes.Domain.Interfaces;
+using com.udragan.netCore.webApi.Notes.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace com.udragan.netCore.webApi.Notes.Controllers
 {
@@ -12,75 +11,67 @@ namespace com.udragan.netCore.webApi.Notes.Controllers
 	{
 		#region Members
 
-		private readonly INotesRepository _notesRepository;
+		private readonly INotesAppUnitOfWork _notesUnitOfWork;
 
 		#endregion
 
 		#region Constructors
 
-		public NotesController(INotesRepository notesRepository)
+		public NotesController(INotesAppUnitOfWork notesUnitOfWork)
 		{
-			_notesRepository = notesRepository;
+			_notesUnitOfWork = notesUnitOfWork;
 		}
 
 		#endregion
 
 		// GET api/notes
 		[HttpGet]
-		public async Task<List<Note>> Get()
+		public List<Note> Get()
 		{
-			var result = _notesRepository.GetAll();
+			var result = _notesUnitOfWork.Notes.GetAll();
 
-			return await result.ToListAsync();
+			return result.ToList();
 		}
 
 		// GET api/notes/5
 		[HttpGet("{id}")]
-		public async Task<Note> Get(int id)
+		public Note Get(int id)
 		{
-			return await _notesRepository.GetById(id);
+			return _notesUnitOfWork.Notes.Get(id);
 		}
 
 		// POST api/notes
 		[HttpPost]
 		public void Post([FromBody]Note value)
 		{
-			_notesRepository.Create(value);
+			_notesUnitOfWork.Notes.Add(value);
+			_notesUnitOfWork.Commit();
 		}
 
 		// PUT api/notes/5
 		[HttpPut("{id}")]
-		public async Task<IActionResult> Put(int id, [FromBody]Note value)
+		public IActionResult Put(int id, [FromBody]Note value)
 		{
-			Note entity = await Get(id);
+			Note entity = Get(id);
 
 			if (entity == null)
 			{
 				return NotFound();
 			}
 
-			entity.Content = value.Content;
+			entity.Update(value);
 
-			int result = await _notesRepository.Update(id, entity);
-
-			if (result == 0)
-			{
-				return NotFound();
-			}
+			_notesUnitOfWork.Commit();
 
 			return NoContent();
 		}
 
 		// DELETE api/notes/5
 		[HttpDelete("{id}")]
-		public async Task<IActionResult> Delete(int id)
+		public IActionResult Delete(int id)
 		{
-			int result = await _notesRepository.Remove(id);
-
-			if (result == 0)
-			{
-				return NoContent();
-			}
+			Note entity = Get(id);
+			_notesUnitOfWork.Notes.Remove(entity);
 
 			return Ok();
 		}
